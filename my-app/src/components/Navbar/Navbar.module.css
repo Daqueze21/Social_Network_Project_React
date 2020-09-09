@@ -1,0 +1,31 @@
+.nav {
+   grid-area: nav;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   padding: 10px 0 10px 10%;
+   background: #2f353d;
+   /*height: 100%;*/
+}
+
+.item {
+   margin: 5px 0;
+}
+
+.item a{
+   color: #FFF;
+   font-weight: 600;
+   font-size: 17px;
+   cursor: pointer;
+   text-decoration: none;
+
+}
+
+.item a:hover {
+   transition: 0.3s;
+   color: #4572ED;
+}
+
+.item .active{
+   color: #F3BA00;
+}

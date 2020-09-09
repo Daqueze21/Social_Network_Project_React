@@ -2,12 +2,18 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
 
 
 function App(props) {
   return (
     <div className="app-wrapper">
       <Header />
+      <Navbar />
+
+      <div className="app-wrapper-content">
+        
+      </div>
     </div>
   );
 }

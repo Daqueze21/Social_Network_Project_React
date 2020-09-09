@@ -1,0 +1,14 @@
+.header {
+   grid-area: header;
+   background: #000;
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   border-bottom: #F1F5F9 1px solid ;
+}
+
+.header img {
+   margin-left: 20px;
+   width: 20px;
+   background: aqua;
+}

@@ -6,10 +6,14 @@ function Navbar() {
    return (
       <nav className={styles.nav}>
          <div className={`${styles.item}`}>
-            <a className={styles.active}>Profile</a>
+            <NavLink to="/Profile" activeClassName={styles.active}>
+               Profile
+            </NavLink>
          </div>
          <div className={styles.item}>
-            <a className={styles.active}>Message</a>
+            <NavLink to="/Dialogs" activeClassName={styles.active}>
+               Message
+            </NavLink>
          </div>
          <div className={styles.item}>
             <a>News</a>
@@ -21,7 +25,7 @@ function Navbar() {
             <a>Settings</a>
          </div>
       </nav>
-   );
+      );
 }
 
 export default Navbar;

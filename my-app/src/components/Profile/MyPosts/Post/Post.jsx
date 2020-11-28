@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Post.module.css';
 
 function Posts(props) {
-   
+
    return (
       <div className={style.item}>
          <img

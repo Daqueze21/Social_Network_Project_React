@@ -19,15 +19,6 @@ function Dialogs(props) {
             <div className={styles.dialogsItems}>
                 {dialogsElements}
 
-                {/*<div className={`${styles.dialog}`}>*/}
-                {/*    <NavLink to="/dialogs/2">Name2</NavLink>*/}
-                {/*</div>*/}
-                {/*<div className={`${styles.dialog}`}>*/}
-                {/*    <NavLink to="/dialogs/3">Name3</NavLink>*/}
-                {/*</div>*/}
-                {/*<div className={`${styles.dialog}`}>*/}
-                {/*    <NavLink to="/dialogs/4">Name4</NavLink>*/}
-                {/*</div>*/}
             </div>
 
             <div className={styles.messages}>

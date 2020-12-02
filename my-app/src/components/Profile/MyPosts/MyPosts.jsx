@@ -3,9 +3,10 @@ import styles from './MyPosts.module.css';
 import Post from './Post/Post';
 
 function MyPosts(props) {
-
+  console.log(props);
+  
   let postsElements = props.posts.map(p => {
-    return <Post message={p.message} likesCount={p.likes} />;
+    return <Post message={p.message} likesCount={p.likes} key={p.id} />;
   });
 
   function onPostSendClick() {

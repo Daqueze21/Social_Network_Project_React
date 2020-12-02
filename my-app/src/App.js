@@ -17,11 +17,11 @@ function App(props) {
       <div className="app-wrapper-content">
         <Route
           path="/profile"
-            render={() => <Profile state={props.state.profilePage} />}
+            render={() => <Profile />}
         />
         <Route
           path="/dialogs"
-            render={() => <DialogsContainer state={props.state.dialogPage} />}
+            render={() => <DialogsContainer />}
         />
       </div>
     </div>

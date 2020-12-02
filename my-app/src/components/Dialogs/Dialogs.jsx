@@ -3,14 +3,15 @@ import styles from './Dialogs.module.css';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
-
 function Dialogs(props) {
+    let {dialogs, messages} = props.dialogsPage;
 
-    let  dialogsElements = props.state.dialogs.map((d) => {
-        return <DialogItem name={d.name} id={d.id}/>
+    let dialogsElements = dialogs.map(d => {
+      return <DialogItem name={d.name} key={d.id} id={d.id} />;
     });
-    let messagesElements = props.state.messages.map((m) => {
-        return <Message message={m.message}/>
+
+    let messagesElements = messages.map(m => {
+      return <Message message={m.message} key={m.id}/>;
     });
     
     function onSendMessageClick () {

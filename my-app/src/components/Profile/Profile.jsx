@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 function Profile(props) {
 
@@ -9,7 +9,7 @@ function Profile(props) {
       <div className={styles.profile}>
          <ProfileInfo/>
 
-         <MyPosts posts = {props.state.posts} />
+         <MyPostsContainer posts = {props.state.posts} />
       </div>
    );
 }

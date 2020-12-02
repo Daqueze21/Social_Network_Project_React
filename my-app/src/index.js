@@ -7,11 +7,14 @@ import './index.css';
 import App from './App';
 import store from './redux/redux-store';
 
+
 let rerenderTree = (state) =>{
   ReactDOM.render(
     <React.StrictMode>
       <Router>
+      
         <App state={state} store ={store}/>
+      
       </Router>
     </React.StrictMode>,
     document.getElementById('root')

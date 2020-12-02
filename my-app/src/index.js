@@ -8,7 +8,7 @@ import App from './App';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
 
-let rerenderTree = (state) =>{
+
   ReactDOM.render(
     <React.StrictMode>
       <Router>
@@ -19,14 +19,8 @@ let rerenderTree = (state) =>{
     </React.StrictMode>,
     document.getElementById('root')
   );
-};
 
-rerenderTree(store.getState());
 
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderTree(state);
-});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

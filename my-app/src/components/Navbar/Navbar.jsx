@@ -6,17 +6,19 @@ function Navbar() {
    return (
       <nav className={styles.nav}>
          <div className={`${styles.item}`}>
-            <NavLink to="/Profile" activeClassName={styles.active}>
-               Profile
+            <NavLink to='/Profile' activeClassName={styles.active}>
+            Profile
             </NavLink>
          </div>
          <div className={styles.item}>
-            <NavLink to="/Dialogs" activeClassName={styles.active}>
-               Message
+            <NavLink to='/Dialogs' activeClassName={styles.active}>
+            Message
             </NavLink>
          </div>
          <div className={styles.item}>
-            <a>News</a>
+            <NavLink to='/Users' activeClassName={styles.active}>
+            Users
+            </NavLink>
          </div>
          <div className={styles.item}>
             <a>Music</a>
@@ -25,7 +27,7 @@ function Navbar() {
             <a>Settings</a>
          </div>
       </nav>
-      );
+   );
 }
 
 export default Navbar;

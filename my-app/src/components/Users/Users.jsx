@@ -3,9 +3,11 @@ import styles from './users.module.css';
 import userAvatar from '../../assets/img/img_avatar.png';
 
 function Users(props) {
+   
    return (
       <div className={styles.users}>
-         <div className={styles.userCard}>
+         {props.users.map(u => (
+            <div className={styles.userCard}>
             <div className={styles.userAvatar}>
                <div className={styles.img}>
                   <img src={userAvatar} alt='avatar' />
@@ -16,15 +18,16 @@ function Users(props) {
             </div>
             <div>
                <span>
-                  <div>name</div>
-                  <div>username</div>
+                  <div>{u.name}</div>
+                  <div>{u.username}</div>
                </span>
                <span>
-                  <div>streets</div>
-                  <div>city</div>
+                  <div>{u.streets}</div>
+                  <div>{u.city}</div>
                </span>
             </div>
-         </div>
+            </div>
+         ))}
       </div>
    );
 }

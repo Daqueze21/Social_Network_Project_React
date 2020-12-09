@@ -18,7 +18,7 @@ function Users(props) {
                   className={props.currentPage === p && styles.selectedPage}
                   key={p}
                   onClick={e => {
-                     props.onPageChange(p);
+                  props.onPageChange(p);
                   }}>
                   {p}
                </span>
@@ -26,30 +26,38 @@ function Users(props) {
             })}
          </div>
 
-         {props.users.map(u =>
+         {props.users.map(
+            u => (
             <div className={styles.userCard} key={u.id}>
-            <div className={styles.userAvatar}>
-               <div className={styles.img}>
+               <div className={styles.userAvatar}>
+                  <div className={styles.img}>
                   <img src={userAvatar} alt='avatar' />
+                  </div>
+                  <div>
+                  {u.followed ? (
+                     <button onClick={() => props.unfollow(u.id)}>
+                        Unfollow
+                     </button>
+                  ) : (
+                     <button onClick={() => props.follow(u.id)}>Follow</button>
+                  )}
+                  </div>
                </div>
                <div>
-                  <button onClick={() => console.log('follow')}>Follow</button>
-               </div>
-            </div>
-            <div>
-               <span>
+                  <span>
                   <div>{u.name}</div>
                   <div>{u.username}</div>
-               </span>
-               <span>
+                  </span>
+                  <span>
                   <div>{u.address.streets}</div>
                   <div>{u.address.city}</div>
-               </span>
+                  </span>
+               </div>
             </div>
-            </div>
-            //userCard
-         )}
-      </div>
+         )
+         //userCard
+       )}
+     </div>
    );
 }
 

@@ -2,3 +2,53 @@
     padding: 10px;
 }
 
+.background_img {
+    width: 100%;
+    height: 200px;
+}
+
+.avatar {
+    width: 100px;
+    border-radius: 50%;
+    margin-top: -3em;
+    margin-left: 3em;
+}
+
+.profile_details {
+    margin-left: 3em;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.profile_details .name {
+    font-size: 2.2em;
+    margin: 5px 0;
+}
+
+.profile_details .company {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 5px 0;
+}
+
+.profile_contactsList {
+    margin: 0.5em 0;
+}
+
+.profile_contactsList ul {
+    padding: 0;
+    list-style: none;
+}
+
+.profile_contactsList ul li {
+    font-size: 1em;
+    margin: 5px 0;
+
+}
+
+.profile_contactsList ul li svg {
+    width: 10px;
+}
+
+

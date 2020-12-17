@@ -1,3 +1,5 @@
+import { userApi } from '../components/api/api';
+
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
@@ -103,5 +105,18 @@ export const unfollow = userId => ({
    type: UNFOLLOW,
    userId
 });
+
+//thunk
+export const getUsersThunk = (currentPage, pageSize) => {
+   return dispatch => {
+      userApi.getUsersList().then(data => {
+         dispatch(setTotalUsersCount(data.length));
+      });
+      userApi.getUsersByPage(currentPage, pageSize).then(data => {
+         dispatch(toggleIsFetching(false));
+         dispatch(setUsers(data));
+      });
+   };
+};
 
 export default usersReducer;

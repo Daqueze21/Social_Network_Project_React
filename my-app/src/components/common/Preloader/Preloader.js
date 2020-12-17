@@ -5,7 +5,11 @@ import styles from './preloader.module.css';
 function Preloader(props) {
   return (
     <div className={styles.preloaderWrapper}>
-      <img src={preloader} style={{ width: '60px'}} />
+      <img
+        src={preloader}
+        style={{ width: '60px' }}
+        alt='preloader'
+      />
     </div>
   );
 }

@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import {
-   setUsers,
-   setCurrentPage,
-   setTotalUsersCount,
-   toggleIsFetching,
-   follow,
-   unfollow
+  setCurrentPage,
+  toggleIsFetching,
+  follow,
+  unfollow,
+  getUsersThunk
 } from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
@@ -19,38 +17,21 @@ class UsersContainer extends React.Component {
 
    componentDidMount() {
       this.props.toggleIsFetching(true);
-      axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
-         this.props.setTotalUsersCount(res.data.length);
-      });
-
-      axios
-         .get(
-         `https://jsonplaceholder.typicode.com/users?_page=${this.props.currentPage}&_limit=${this.props.pageSize}`
-         )
-         .then(res => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(res.data);
-         });
+      this.props.getUsersThunk(this.props.currentPage, this.props.pageSize);
    }
 
    onPageChange = pageNumber => {
       this.props.toggleIsFetching(true);
       this.props.setCurrentPage(pageNumber);
-      axios.get(
-         `https://jsonplaceholder.typicode.com/users?_page=${pageNumber}&_limit=${this.props.pageSize}`
-      )
-      .then(res => {
-         this.props.toggleIsFetching(false);
-         this.props.setUsers(res.data);
-      });
+      this.props.getUsersThunk(pageNumber, this.props.pageSize);
    };
 
    render() {
       return (
          <>
-            {this.props.isFetching ? (
+            {this.props.isFetching ?
                <Preloader />
-            ) : (
+            :
                <Users
                users={this.props.users}
                totalUsersCount={this.props.totalUsersCount}
@@ -60,7 +41,7 @@ class UsersContainer extends React.Component {
                follow={this.props.follow}
                unfollow={this.props.unfollow}
                />
-            )}
+            }
          </>
       );
    }
@@ -86,8 +67,7 @@ let mapStateToProps = state => {
 export default connect(mapStateToProps, {
    follow,
    unfollow,
-   setUsers,
-   setTotalUsersCount,
    setCurrentPage,
-   toggleIsFetching
+   toggleIsFetching,
+   getUsersThunk
 })(UsersContainer);

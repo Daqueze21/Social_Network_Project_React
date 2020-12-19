@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 });
 
 export const userApi = {
-   //users component
+         //users component
    getUsersList() {
       return axiosInstance(`users`).then(res => {
          return res.data;
@@ -15,11 +15,21 @@ export const userApi = {
    },
 
    getUsersByPage(currentPage, pageSize) {
-      return axiosInstance(`users?_page=${currentPage}&_limit=${pageSize}`).then(
-         res => {
+      return axiosInstance(
+         `users?_page=${currentPage}&_limit=${pageSize}`
+      ).then(res => {
          return res.data;
-         }
-      );
+      });
    },
 
+   getProfile(userId) {
+      return axiosInstance(`users/${userId}`).then(res => {
+         return res.data;
+      });
+   },
+   getUserPosts (userId) {
+      return axiosInstance(`users/${userId}/posts`).then((res) => {
+         return res.data
+      })
+   },
 };

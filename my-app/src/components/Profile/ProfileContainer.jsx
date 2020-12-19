@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Profile from './Profile';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
-import {setUserProfile } from '../../redux/profile-reducer';
+import {
+  setUserProfile,
+  setUserPosts,
+  getUserProfile,
+  getUserPosts
+} from '../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends Component {
@@ -13,12 +17,15 @@ class ProfileContainer extends Component {
       }
 
       //get user data
-      axios
-         .get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-         .then(res => {
-         console.log('user', res);
-         this.props.setUserProfile(res.data);
-         });
+      // axios
+      //    .get(`https://jsonplaceholder.typicode.com/users/${userId}`)
+      //    .then(res => {
+      //    console.log('user', res);
+      //    this.props.setUserProfile(res.data);
+      //    });
+      this.props.getUserProfile(userId);
+
+      this.props.getUserPosts(userId);
    }
 
    render() {
@@ -31,8 +38,13 @@ let mapStateToProps = state => {
    return { profile };
 };
 
+
+
 let DataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { setUserProfile})(
-   DataContainerComponent
-);
+export default connect(mapStateToProps, {
+  setUserProfile,
+  setUserPosts,
+  getUserProfile,
+  getUserPosts
+})(DataContainerComponent);

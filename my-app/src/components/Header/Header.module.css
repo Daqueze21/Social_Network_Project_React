@@ -2,13 +2,18 @@
    grid-area: header;
    background: #000;
    display: flex;
-   justify-content: left;
+   justify-content: space-between;
    align-items: center;
-   border-bottom: #F1F5F9 1px solid ;
+   border-bottom: #F1F5F9 1px solid;
+   padding: 0 20px;
 }
 
-.header img {
-   margin-left: 20px;
+.header_logo img {
    width: 20px;
    background: aqua;
+}
+
+.header_login a {
+   color: #FFFFFF;
+   text-decoration: none;
 }

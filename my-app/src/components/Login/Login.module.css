@@ -1,0 +1,42 @@
+.login {
+   background: #f0fff0;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.login_form {
+   width: 50%;
+   margin: 5px 0;
+   padding: 10px;
+   border: 2px solid black;
+   border-radius: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.login_form>div {
+   margin: 5px 0;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.form_textInput {
+   height: 2em;
+   border: 2px solid #ccc;
+   border-radius: 5px;
+   width: 80%;
+}
+
+
+
+
+
+.form_checkbox {
+   display: flex;
+   justify-content: flex-start;
+}

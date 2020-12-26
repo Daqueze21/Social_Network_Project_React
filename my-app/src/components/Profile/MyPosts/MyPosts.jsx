@@ -8,16 +8,6 @@ function MyPosts(props) {
     return <Post message={p.body} likesCount={p.userId} key={p.id} />;
   });
 
-  // let newPostElement = React.createRef();
-
-  // let onAddPost = () => {
-  //   props.addPost();
-  // };
-
-  // let onPostChange = () => {
-  //   let text = newPostElement.current.value;
-  //   props.updateNewPostText(text);
-  // };
   function addNewPost(values) {
     props.addPost(values.newPostText);
   }

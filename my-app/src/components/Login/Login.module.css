@@ -18,25 +18,37 @@
    align-items: center;
 }
 
-.login_form>div {
-   margin: 5px 0;
-   width: 100%;
+.login_form div {
    display: flex;
    justify-content: center;
 }
 
 .form_textInput {
+   width: 20em;
    height: 2em;
    border: 2px solid #ccc;
    border-radius: 5px;
-   width: 80%;
+   margin-bottom: 25px;
 }
 
-
-
-
+.login_form div {
+   display: flex;
+   justify-content: center;
+}
 
 .form_checkbox {
    display: flex;
    justify-content: flex-start;
+   margin-bottom: 10px;
+}
+
+.form_button {
+   width: 5em;
+   text-align: center;
+   color: #fff;
+   background: #2f353d;
+   border-radius: 6px;
+   padding: 5px;
+   transition: .3s ease;
+   cursor: pointer;
 }

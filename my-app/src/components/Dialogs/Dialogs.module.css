@@ -14,3 +14,24 @@
 .messages {
    margin: 10px;
 }
+
+.sendMessageForm {
+   display: flex;
+}
+
+.sendMessageForm div input {
+   width: 15em;
+   height: 25px;
+   border-radius: 5px;
+}
+
+.sendMessageButton {
+   width: 5em;
+   text-align: center;
+   color: #fff;
+   background: #2f353d;
+   border-radius: 6px;
+   padding: 5px;
+   transition: .3s ease;
+   cursor: pointer;
+}

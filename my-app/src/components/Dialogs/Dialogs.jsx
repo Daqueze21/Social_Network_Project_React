@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import AddMessageFormRedux from './AddMessageFormRedux';
 
+
 function Dialogs(props) {
     let { dialogs, messages } = props.dialogsPage;
 
@@ -20,13 +21,14 @@ function Dialogs(props) {
     }
 
     return (
-        <div className={styles.dialogs}>
+        <div>
+            <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>{dialogsElements}</div>
 
             <div className={styles.messages}>
                 <div>{messagesElements}</div>
             </div>
-
+            </div>
             <AddMessageFormRedux onSubmit={addNewMessage} />
         </div>
     );

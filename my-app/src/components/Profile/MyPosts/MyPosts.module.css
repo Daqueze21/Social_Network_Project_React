@@ -6,6 +6,25 @@
     margin-top: 10px;
 }
 
-textarea{
-    width: 400px;
+.postInput {
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.postInput input {
+    width: 25em;
+    height: 25px;
+    border-radius: 5px;
+
+}
+.postInputButton {
+    width: 5em;
+    text-align: center;
+    color: #fff;
+    background: #2f353d;
+    border-radius: 6px;
+    padding: 5px;
+    transition: .3s ease;
+    cursor: pointer;
 }

@@ -13,7 +13,15 @@
    background: aqua;
 }
 
-.header_login a {
+.header_userName a {
    color: #FFFFFF;
    text-decoration: none;
+}
+
+.header_logout {
+   margin-right: 5px;
+   display: flex;
+   width: 180px;
+   justify-content: space-between;
+   cursor: pointer;
 }

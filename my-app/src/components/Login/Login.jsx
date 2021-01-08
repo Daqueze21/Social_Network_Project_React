@@ -3,6 +3,9 @@ import styles from './Login.module.css';
 import { Field, reduxForm } from 'redux-form';
 import { maxLengthCreator, required } from '../utils/validators/validators';
 import { Input } from '../common/FormControls/FormControls';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login, logout } from '../../redux/auth-reducer';
 
 const maxLength25 = maxLengthCreator(25);
 const maxLength15 = maxLengthCreator(15);
@@ -13,24 +16,23 @@ const LoginForm = props => {
    return (
       <form onSubmit={handleSubmit} className={styles.login_form}>
          
-            <Field
-            className={styles.form_textInput}
-            type='text'
-            placeholder={'login'}
-            name={'login'}
-            component={Input}
-            validate={[required, maxLength25]}
-            />
+         <Field
+         className={styles.form_textInput}
+         type='text'
+         placeholder={'login'}
+         name={'login'}
+         component={Input}
+         validate={[required, maxLength25]}
+         />
          
-         
-            <Field
-            className={styles.form_textInput}
-            type='text'
-            placeholder={'password'}
-            name={'password'}
-            component={Input}
-            validate={[required, maxLength15]}
-            />
+         <Field
+         className={styles.form_textInput}
+         type='text'
+         placeholder={'password'}
+         name={'password'}
+         component={Input}
+         validate={[required, maxLength15]}
+         />
          
          <div className={styles.form_checkbox}>
             <Field type={'checkbox'} name={'rememberMe'} component={'input'} />
@@ -49,9 +51,12 @@ const LoginReduxForm = reduxForm({
 
 function Login(props) {
    const onSubmit = formData => {
-      console.log(formData);
+      props.login(formData.login, formData.password);
    };
 
+   if (props.isAuth) {
+      return <Redirect to={'profile'} />;
+   }
    return (
       <div className={styles.login}>
          <h1>Login</h1>
@@ -60,4 +65,12 @@ function Login(props) {
    );
 }
 
-export default Login;
+const mapStateToProps = state => ({
+   isAuth: state.auth.isAuth
+});
+
+export default connect(mapStateToProps, {
+   login,
+   logout
+})(Login);
+

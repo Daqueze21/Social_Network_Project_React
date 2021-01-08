@@ -33,3 +33,18 @@ export const userApi = {
       })
    },
 };
+
+export const authApi = {
+   signIn(email, password) {
+      return {
+         email,
+         isAuth: true,
+         userName: 'userName',
+         userId: password
+      };
+   },
+
+   signOut(){
+      console.log('signOut');
+   }
+}

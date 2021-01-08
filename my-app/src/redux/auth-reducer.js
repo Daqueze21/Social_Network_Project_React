@@ -34,20 +34,35 @@ export const setAuthUserData = (email, isAuth, userName, userId) => ({
 });
 
 
-
-export const login = (email, password) => dispatch => {
-   let resp = authApi.signIn(email, password);
-   dispatch(
-      setAuthUserData(resp.email, resp.isAuth, resp.userName, resp.userId)
-   );
+//thunk
+export const getAuthUserData = () => (dispatch) =>  {
+   authApi.isAuthenticated()
+      .then(authApiResp => {
+         userApi.getUsersList ().then( userApiResp => {
+            let userObj = userApiResp.find(user => user.email === authApiResp.data.email);
+            // console.log('rest', authApiResp, user);
+            dispatch(setAuthUserData(
+               authApiResp.data.email, 
+               authApiResp.isAuth, 
+               userObj.username, 
+               userObj.id
+            ));
+         })
+      })
+      .catch(err => console.log(err));
 };
 
-export const logout = (email, password) => dispatch => {
+
+export const login = (email, password) => dispatch => {
+   authApi.signIn(email, password);
+   dispatch(getAuthUserData());
+};
+
+export const logout = () => dispatch => {
    authApi.signOut();
    dispatch(
       setAuthUserData(null, false, null, null)
    );
 };
-
 
 export default authReducer;

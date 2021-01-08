@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import fakeAuth from 'fake-authentication';
 
 // const baseUrl = 'https://jsonplaceholder.typicode.com/';
 
@@ -36,15 +37,18 @@ export const userApi = {
 
 export const authApi = {
    signIn(email, password) {
-      return {
-         email,
-         isAuth: true,
-         userName: 'userName',
-         userId: password
-      };
+      return fakeAuth
+         .signIn(email, password)
+         .then(resp => console.log('signIn', resp))
+         .catch(err => console.log('signIn', err));
+   },
+
+   isAuthenticated() {
+      return fakeAuth.isAuthenticated();
+
    },
 
    signOut(){
-      console.log('signOut');
+      return fakeAuth.signOut();
    }
 }

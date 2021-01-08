@@ -14,4 +14,6 @@ let mapStateToProps = state => ({
    userName: state.auth.userName
 });
 
-export default connect(mapStateToProps, {setAuthUserData, logout})(HeaderContainer);
+export default connect(mapStateToProps, { setAuthUserData, logout })(
+   HeaderContainer
+);

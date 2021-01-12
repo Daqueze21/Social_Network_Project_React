@@ -13,10 +13,12 @@ import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends Component {
    componentDidMount() {
-      console.log('profile', this.props);
       let userId = this.props.match.params.userId;
       if (!userId) {
          userId = this.props.authorisedUserId;
+         if (!userId) {
+            this.props.history.push('/login');
+         }
       };
 
       this.props.getUserProfile(userId);

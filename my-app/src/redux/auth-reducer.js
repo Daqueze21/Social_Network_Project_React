@@ -42,9 +42,9 @@ export const getAuthUserData = () => (dispatch) =>  {
             let userObj = userApiResp.find(user => user.email === authApiResp.data.email);
             // console.log('rest', authApiResp, user);
             dispatch(setAuthUserData(
-               authApiResp.data.email, 
-               authApiResp.isAuth, 
-               userObj.username, 
+               authApiResp.data.email,
+               authApiResp.isAuth,
+               userObj.username,
                userObj.id
             ));
          })

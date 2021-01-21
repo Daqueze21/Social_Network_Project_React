@@ -1,6 +1,6 @@
 import { authApi, userApi } from '../components/api/api';
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'network/auth/SET_USER_DATA';
 
 let initialState = {
    email: null,
@@ -35,21 +35,11 @@ export const setAuthUserData = (email, isAuth, userName, userId) => ({
 
 
 //thunk
-export const getAuthUserData = () => (dispatch) =>  {
-   authApi.isAuthenticated()
-      .then(authApiResp => {
-         userApi.getUsersList ().then( userApiResp => {
-            let userObj = userApiResp.find(user => user.email === authApiResp.data.email);
-            // console.log('rest', authApiResp, user);
-            dispatch(setAuthUserData(
-               authApiResp.data.email,
-               authApiResp.isAuth,
-               userObj.username,
-               userObj.id
-            ));
-         })
-      })
-      .catch(err => console.log(err));
+export const getAuthUserData = () => async (dispatch) =>  {
+   let authApiResp = await authApi.isAuthenticated();
+   let userApiResp = await userApi.getUsersList ();
+   let userObj = userApiResp.find(user => user.email === authApiResp.data.email);
+   dispatch(setAuthUserData(authApiResp.data.email, authApiResp.isAuth, userObj.username, userObj.id));
 };
 
 

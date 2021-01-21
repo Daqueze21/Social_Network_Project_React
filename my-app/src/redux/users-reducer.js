@@ -1,11 +1,11 @@
 import { userApi } from '../components/api/api';
 
-const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'network/users/SET_USERS';
+const SET_CURRENT_PAGE = 'network/users/SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'network/users/SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'network/users/TOGGLE_IS_FETCHING';
+const FOLLOW = 'network/users/FOLLOW';
+const UNFOLLOW = 'network/users/UNFOLLOW';
 
 let initialState = {
    users: [],
@@ -108,14 +108,14 @@ export const unfollow = userId => ({
 
 //thunk
 export const getUsersThunk = (currentPage, pageSize) => {
-   return dispatch => {
-      userApi.getUsersList().then(data => {
-         dispatch(setTotalUsersCount(data.length));
-      });
-      userApi.getUsersByPage(currentPage, pageSize).then(data => {
-         dispatch(toggleIsFetching(false));
-         dispatch(setUsers(data));
-      });
+   return async dispatch => {
+      const usersList = await userApi.getUsersList();
+      dispatch(setTotalUsersCount(usersList.length));
+
+      toggleIsFetching(true);
+      const UsersByPage = await userApi.getUsersByPage(currentPage, pageSize);
+      dispatch(toggleIsFetching(false));
+      dispatch(setUsers(UsersByPage));
    };
 };
 

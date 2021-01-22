@@ -24,14 +24,58 @@
    font-weight: bold;
 }
 
-.userAvatar {
+.list {
    display: flex;
    flex-direction: column;
    align-items: center;
-   margin-right: 10%;
+   width: 100%;
 }
 
-.img> img {
+.avatar {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-right: 1em;
+}
+
+.avatarImg {
    width: 80px;
    border-radius: 50%;
+}
+
+.user_content {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+}
+
+.avatar_btn {
+   width: 5em;
+   font-size: 0.9em;
+   letter-spacing: .5px;
+   height: 25px;
+   padding: 3px;
+   color: #fff;
+   background: #2f353d;
+   border-radius: 6px;
+   transition: .3s ease;
+   cursor: pointer;
+   border: none;
+}
+
+.avatar_btn:hover {
+   color: #F3BA00;
+}
+
+.user_name {
+   font-size: 1.4em;
+   font-weight: 600;
+   margin-bottom: 10px;
+}
+
+.user_email,
+.user_city {
+   color: #333;
+   margin: 2px 0;
 }

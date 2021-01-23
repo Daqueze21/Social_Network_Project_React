@@ -22,6 +22,10 @@
    margin-right: 5px;
    display: flex;
    width: 180px;
-   justify-content: space-between;
    cursor: pointer;
+   justify-content: flex-end;
+}
+
+.header_logout_btn {
+   margin-left: 10px;
 }

@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './users.module.css';
-import userAvatar from '../../assets/img/img_avatar.png';
-import { NavLink } from 'react-router-dom';
 import User from './User';
 
 function Users({currentPage, onPageChange, totalUsersCount, pageSize, users, follow, unfollow,  ...props}) {

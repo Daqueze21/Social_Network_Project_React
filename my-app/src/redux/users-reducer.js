@@ -1,4 +1,5 @@
 import { userApi } from '../components/api/api';
+import { updateObjDataInArray } from '../components/utils/object-helpers';
 
 const SET_USERS = 'network/users/SET_USERS';
 const SET_CURRENT_PAGE = 'network/users/SET_CURRENT_PAGE';
@@ -49,11 +50,8 @@ let initialState = {
       case FOLLOW: {
          return {
             ...state,
-            users: state.users.map(u => {
-            if (u.id === action.userId) {
-               return { ...u, followed: true };
-            }
-            return u;
+            users: updateObjDataInArray(state.users, action.userId, 'id', {
+               followed: true
             })
          };
       }
@@ -61,11 +59,8 @@ let initialState = {
       case UNFOLLOW: {
          return {
             ...state,
-            users: state.users.map(u => {
-            if (u.id === action.userId) {
-               return { ...u, followed: false };
-            }
-            return u;
+            users: updateObjDataInArray(state.users, action.userId, 'id', {
+               followed: false
             })
          };
       }

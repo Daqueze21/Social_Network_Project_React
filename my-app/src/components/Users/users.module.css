@@ -16,14 +16,6 @@
    padding: 5px 10px;
 }
 
-.pageNumbers {
-   cursor: pointer;
-}
-
-.selectedPage {
-   font-weight: bold;
-}
-
 .list {
    display: flex;
    flex-direction: column;

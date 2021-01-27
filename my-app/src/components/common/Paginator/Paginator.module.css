@@ -1,0 +1,19 @@
+.paginator {
+   margin: 10px;
+   cursor: pointer;
+}
+.paginator_btn {
+   margin: 0 5px;
+}
+
+.pageNumber {
+   padding: 2px;
+   border: lightgrey 2px solid;
+   margin: 0 1px;
+   vertical-align: middle;
+}
+
+.pageNumber.selectedPage {
+   font-weight: bold;
+   border: black 2px solid;
+}

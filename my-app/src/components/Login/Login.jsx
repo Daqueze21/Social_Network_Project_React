@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Login.module.css';
-import { Field, reduxForm } from 'redux-form';
+import {reduxForm } from 'redux-form';
 import { maxLengthCreator, required } from '../utils/validators/validators';
 import { CreateField, Input } from '../common/FormControls/FormControls';
 import { Redirect } from 'react-router-dom';

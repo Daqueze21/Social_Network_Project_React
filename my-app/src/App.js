@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
-import Preloader from './components/common/Preloader/Preloader';
+import { withSuspense } from './hoc/withSuspense';
+
+//lazy loading
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 
 class App extends Component {
@@ -20,9 +22,9 @@ class App extends Component {
     }
 
     render() {
-      if (!this.props.initialized) {
-          return <Preloader />
-      }
+      // if (!this.props.initialized) {
+      //     return <Preloader />
+      // }
       
       return (
         <div className='app-wrapper'>
@@ -30,11 +32,14 @@ class App extends Component {
           <Navbar />
 
           <div className='app-wrapper-content'>
-            <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+            <Route
+              path='/profile/:userId?'
+              render={withSuspense(ProfileContainer)}
+            />
 
-            <Route path='/dialogs' render={() => <DialogsContainer />} />
+            <Route path='/dialogs' render={withSuspense(DialogsContainer)} />
 
-            <Route path='/users' render={() => <UsersContainer />} />
+            <Route path='/users' render={withSuspense(UsersContainer)} />
 
             <Route path='/login' render={() => <LoginContainer />} />
           </div>

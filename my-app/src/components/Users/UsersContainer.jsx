@@ -22,10 +22,7 @@ import {
 } from '../../redux/users-selectors';
 
 class UsersContainer extends React.Component {
-   constructor(props) {
-      super(props);
-   }
-
+   
    componentDidMount() {
       this.props.toggleIsFetching(true);
       this.props.getUsersThunk(this.props.currentPage, this.props.pageSize);
